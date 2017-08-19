@@ -34,24 +34,18 @@ namespace _Autocad_Intersect
             var pts = new Point3dCollection();
 
             // Get the underlying GeLib curve
-
             var gcur = cur.GetGeCurve();
 
             // Project this curve onto our plane
-
             var proj = gcur.GetProjectedEntity(p, p.Normal) as Curve3d;
             if (proj != null)
             {
                 // Create a DB curve from the projected Ge curve
-
                 using (var gcur2 = Curve.CreateFromGeCurve(proj))
                 {
                     // Check where it intersects with the original curve:
                     // these should be our intersection points on the plane
-
-                    cur.IntersectWith(
-                      gcur2, Intersect.OnBothOperands, pts, IntPtr.Zero, IntPtr.Zero
-                    );
+                    cur.IntersectWith(gcur2, Intersect.OnBothOperands, pts, IntPtr.Zero, IntPtr.Zero);
                 }
             }
             return pts.ToArray();
@@ -79,4 +73,5 @@ namespace _Autocad_Intersect
             return false;
         }
     }
+
 }

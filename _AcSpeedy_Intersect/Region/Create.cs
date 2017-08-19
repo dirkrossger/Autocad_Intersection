@@ -5,7 +5,7 @@ using Autodesk.AutoCAD.Geometry;
 using Autodesk.AutoCAD.Runtime;
 using System;
 
-namespace _Autocad_Intersect.Region
+namespace _Autocad_Intersect_Region
 {
     public class Extensions
     {

@@ -82,6 +82,7 @@
   <ItemGroup>
     <Compile Include="Commands.cs" />
     <Compile Include="Extensions.cs" />
+    <Compile Include="Plane\Create.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Get.cs" />
     <Compile Include="Region\Create.cs" />

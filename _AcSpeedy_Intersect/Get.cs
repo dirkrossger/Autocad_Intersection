@@ -23,6 +23,7 @@ namespace _Autocad_Intersect
             // Ask the user to select a curve
             switch (obj)
             {
+                #region Curve
                 case "Curve":
                     peo.SetRejectMessage("Must be a curve.");
                     peo.AddAllowedClass(typeof(Curve), false);
@@ -35,7 +36,39 @@ namespace _Autocad_Intersect
                     }
                     else
                         return ObjectId.Null;
+                #endregion
 
+                #region Polyline2d
+                case "Polyline2d":
+                    peo.SetRejectMessage("Must be a Polyline2d.");
+                    peo.AddAllowedClass(typeof(Polyline2d), false);
+
+                    per = ed.GetEntity(peo);
+                    if (per.Status == PromptStatus.OK)
+                    {
+                        curId = per.ObjectId;
+                        return curId;
+                    }
+                    else
+                        return ObjectId.Null;
+                #endregion
+
+                #region Polyline
+                case "Polyline":
+                    peo.SetRejectMessage("Must be a Polyline.");
+                    peo.AddAllowedClass(typeof(Polyline), false);
+
+                    per = ed.GetEntity(peo);
+                    if (per.Status == PromptStatus.OK)
+                    {
+                        curId = per.ObjectId;
+                        return curId;
+                    }
+                    else
+                        return ObjectId.Null;
+                #endregion
+
+                #region PlanSurface
                 case "PlanSurface":
                     peo.SetRejectMessage("Must be a PlanSurface.");
                     peo.AddAllowedClass(typeof(PlaneSurface), false);
@@ -48,6 +81,7 @@ namespace _Autocad_Intersect
                     }
                     else
                         return ObjectId.Null;
+                    #endregion
             }
             return ObjectId.Null;
         }
